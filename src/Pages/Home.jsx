@@ -1,5 +1,4 @@
 import { useLoaderData } from "react-router-dom";
-import HomeCard from "../Components/HomeCard";
 import Search from "../Components/Search";
 
 const Home = () => {
@@ -15,9 +14,9 @@ const Home = () => {
         </div>
       </div>
       <div className="events grid grid-cols-4 gap-4 mb-12">
-        {events.map((event) => (
+        {/* {events.map((event) => (
           <HomeCard key={event.id} event={event}></HomeCard>
-        ))}
+        ))} */}
       </div>
     </div>
   );

@@ -47,10 +47,9 @@ const Search = ({ events }) => {
         )}
 
         <div className=" grid grid-cols-4 gap-4">
-          {query &&
-            result.map((event) => (
-              <HomeCard key={event.id} event={event}></HomeCard>
-            ))}
+          {result.map((event) => (
+            <HomeCard key={event.id} event={event}></HomeCard>
+          ))}
         </div>
       </div>
     </div>
