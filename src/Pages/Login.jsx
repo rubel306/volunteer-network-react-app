@@ -1,8 +1,64 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProviders";
 
 const Login = () => {
+  const { logIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleLogIn = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    logIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log("logged in ", loggedUser);
+        navigate("/");
+      })
+      .catch((error) => console.log(error));
+  };
   return (
     <div className="text-center py-16">
+      <div className="hero-content flex-col">
+        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100  p-4">
+          <h1 className="text-3xl text-center mt-5 mb-2 font-bold">Login</h1>
+          <form onSubmit={handleLogIn} className="card-body">
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Email</span>
+              </label>
+              <input
+                type="email"
+                name="email"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Password</span>
+              </label>
+              <input
+                type="password"
+                name="password"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control mt-6">
+              <button className="btn btn-primary">Log In</button>
+            </div>
+            <label className="label">
+              <a href="#" className="label-text-alt link link-hover">
+                New in Volunteer Network ?
+                <Link to="/register">Please Register </Link>
+              </a>
+            </label>
+          </form>
+        </div>
+      </div>
+
       <h2 className="text-black font-bold text-3xl py-4">Login in With</h2>
       <Link className="text-center mx-auto flex justify-between items-center border rounded-lg border-gray-500 p-4 w-72 my-8">
         <svg

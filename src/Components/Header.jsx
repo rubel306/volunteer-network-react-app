@@ -31,7 +31,7 @@ const Header = () => {
           <li>
             <Link
               className="font-semibold text-white py-3 px-8 rounded-lg bg-sky-400 hover:bg-[#434141] transition-all duration-300"
-              to="/"
+              to="/register"
             >
               Register
             </Link>
